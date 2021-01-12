@@ -1,9 +1,10 @@
 * {
   margin: 0;
+  font-family: "Rubik", sans-serif;
 }
 
 #inputfieldDivWrapper {
-  height: 30vh;
+  height: 35vh;
   background-image: url("../images/pattern-bg.png");
   background-color: #cccccc;
   width: 100%;
@@ -57,4 +58,63 @@ input[type="submit"] {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#ipInformationContainer {
+  width: 75%;
+  background-color: #cccccc;
+  height: 20vh;
+  margin-top: -80px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 15px;
+  display: flex;
+}
+
+.ipInfoElement {
+  /*border: 3px solid black;*/
+  flex: 1 1 auto;
+  width: 25%;
+  text-align: left;
+  display: flex;
+  position: relative;
+  z-index: 3;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
+  /*border-right: 1px solid red;*/
+}
+
+.ipInfoElement:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 25%;
+  height: 50%;
+  border-left: 1px solid #0000cc;
+}
+
+.ipInfoElement:nth-of-type(1)::after {
+  border-left: none;
+}
+
+.ipInfoTitle {
+  padding-bottom: 20px;
+  margin-top: -20px;
+}
+
+.ipInfoValue {
+  font-size: 24px;
+  width: 150px;
+  height: 40px;
+}
+
+#map {
+  width: 100vw;
+  background-color: #333333;
+  height: 68vh;
+  position: relative;
+  padding-top: -40px;
+  margin-top: -90px;
+  z-index: -1;
 }

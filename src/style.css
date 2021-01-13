@@ -33,6 +33,17 @@ input[type="text"] {
   display: inline-block;
 }
 
+input[type="text"]:hover {
+  cursor: pointer;
+}
+
+.invalidInput {
+  border: red solid 3px;
+}
+.validInput {
+  border: green solid 3px;
+}
+
 input[type="submit"] {
   height: 50px;
   width: 4vw;
@@ -50,6 +61,10 @@ input[type="submit"] {
   -webkit-appearance: none;
   position: absolute;
   right: 460px;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
 }
 
 #inputBoxContainer {

@@ -14,7 +14,7 @@
         crossorigin="" />-->
 
     <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <!--<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   <!--<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>-->
 </head>
@@ -22,8 +22,8 @@
     <div id="inputfieldDivWrapper">
         <h1 id="siteTitle">IP Address Tracker</h1>
         <div id="inputBoxContainer">
-<input type="text" placeholder="Search for any IP address or domain">
-<input type="submit">
+<input type="text" placeholder="Search for any IP address or domain" id="inputField" pattern="^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$" title="3 numbers followed by a full stop. 3 numbers followed by a full stop. 3 numbers followed by a full stop. 3 numbers.">
+<input type="submit" id="submitButton">
         </div>
         
     </div>

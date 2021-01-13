@@ -2,9 +2,22 @@ let ipAddressElem = document.getElementById('ipAddress');
 let addressElem = document.getElementById('address');
 let timezoneElem = document.getElementById('timezone');
 let ispProviderElem = document.getElementById('ispProvider');
+let submitButton = document.getElementById('submitButton');
+let inputField = document.getElementById('inputField');
 
 
-/*var mymap = L.map('map').setView([51.505, -0.09], 20);
+/*
+(async function fetchDefaultInfoIpify() {
+let apiResponse = await fetch('https://geo.ipify.org/api/v1?apiKey=at_KOKeqxdXZ9m8bjMRT56XCWfWNJ74S')
+let apiResponseJson = await apiResponse.json()
+console.log(apiResponseJson)
+ipAddressElem.textContent = apiResponseJson.ip
+addressElem.textContent = `${apiResponseJson.location.city}, ${apiResponseJson.location.country}`
+timezoneElem.textContent = `UTC${apiResponseJson.location.timezone}`
+ispProviderElem.textContent = apiResponseJson.isp
+
+
+var mymap = L.map('map').setView([apiResponseJson.location.lat, apiResponseJson.location.lng], 16);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -17,33 +30,57 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 var blackIcon = L.icon({
     iconUrl: '../images/icon-location.svg',
-    shadowUrl: '../images/icon-location.svg',
-
     iconSize:     [33, 90],
-    shadowSize:   [50, 64], 
-    
 });
 
 
-let arrayOfLatLngs = [51.505, -0.09]
 
 
+L.marker([apiResponseJson.location.lat, apiResponseJson.location.lng], {icon: blackIcon}).addTo(mymap);
+
+})();*/
+
+inputField.addEventListener("keyup", () => {
+console.log(inputField.value.length);
+const regex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/g;
+
+let match = inputField.value.match(regex);
+
+if (match !== null) {
+if (match.length > 0)  {
+console.log('VALID INPUT')
+console.log(inputField.value)
+ inputField.classList.remove('invalidInput')
+ inputField.classList.add('validInput')
+}
+}
+
+else {
+    inputField.classList.add('invalidInput')
+    console.log('INVALID input')
+}
+})
+
+submitButton.addEventListener('click', (e) => {
+
+const regex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/g;
+
+let match = inputField.value.match(regex);
+
+if (match !== null) {
+if (match.length > 0)  {
+console.log('Working')
+console.log(inputField.value)
+}
+}
+
+else {
+    e.preventDefault()
+    console.log('Invalid input')
+}
 
 
-
-L.marker(mymap.getCenter(), {icon: blackIcon}).addTo(mymap);
-
-(async function fetchDefaultInfoIpify() {
-let apiResponse = await fetch('https://geo.ipify.org/api/v1?apiKey=at_KOKeqxdXZ9m8bjMRT56XCWfWNJ74S')
-let apiResponseJson = await apiResponse.json()
-console.log(apiResponseJson)
-ipAddressElem.textContent = apiResponseJson.ip
-addressElem.textContent = `${apiResponseJson.location.city}, ${apiResponseJson.location.country}`
-timezoneElem.textContent = `UTC${apiResponseJson.location.timezone}`
-ispProviderElem.textContent = apiResponseJson.isp
-})();
-
-*/
+})
 
 
 

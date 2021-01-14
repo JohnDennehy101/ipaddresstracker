@@ -42,12 +42,22 @@ L.marker([apiResponseJson.location.lat, apiResponseJson.location.lng], {icon: bl
 
 inputField.addEventListener("keyup", () => {
 console.log(inputField.value.length);
-const regex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/g;
+const ipRegex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/g;
+const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/g;
 
-let match = inputField.value.match(regex);
+let ipMatch = inputField.value.match(ipRegex);
+let domainMatch = inputField.value.match(domainRegex);
 
-if (match !== null) {
-if (match.length > 0)  {
+if (ipMatch !== null) {
+if (ipMatch.length > 0)  {
+console.log('VALID INPUT')
+console.log(inputField.value)
+ inputField.classList.remove('invalidInput')
+ inputField.classList.add('validInput')
+}
+}
+else if (domainMatch !== null) {
+if (domainMatch.length > 0) {
 console.log('VALID INPUT')
 console.log(inputField.value)
  inputField.classList.remove('invalidInput')
@@ -56,6 +66,7 @@ console.log(inputField.value)
 }
 
 else {
+    inputField.classList.remove('validInput')
     inputField.classList.add('invalidInput')
     console.log('INVALID input')
 }
@@ -63,12 +74,39 @@ else {
 
 submitButton.addEventListener('click', (e) => {
 
-const regex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/g;
+const ipRegex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/g;
+const domainRegex = /^[a-zA-Z0-9][a-zA-Z0-9-]{0,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/g;
 
-let match = inputField.value.match(regex);
+let ipMatch = inputField.value.match(ipRegex);
+let domainMatch = inputField.value.match(domainRegex);
 
-if (match !== null) {
-if (match.length > 0)  {
+if (ipMatch !== null) {
+if (ipMatch.length > 0)  {
+console.log('Working')
+
+
+let apiIpResponse = async () => {
+let response = await fetch(`https://geo.ipify.org/api/v1?apiKey=at_KOKeqxdXZ9m8bjMRT56XCWfWNJ74S&ipAddress=${inputField.value}`);
+let data = response.json();
+return data;
+}
+
+apiIpResponse().then((data) => {
+    console.log(data)
+    ipAddressElem.textContent = data.ip
+    addressElem.textContent = `${data.location.city}, ${data.location.country}`
+    timezoneElem.textContent = `UTC${data.location.timezone}`
+    ispProviderElem.textContent = data.isp
+}).catch((e) => {
+    alert(e)
+})
+//console.log(inputField.value)
+
+}
+}
+
+else if (domainMatch !== null) {
+if (domainMatch.length > 0) {
 console.log('Working')
 console.log(inputField.value)
 }

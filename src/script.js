@@ -4,10 +4,10 @@ let timezoneElem = document.getElementById('timezone');
 let ispProviderElem = document.getElementById('ispProvider');
 let submitButton = document.getElementById('submitButton');
 let inputField = document.getElementById('inputField');
+let mapElem = document.getElementById('map');
 
 
-/*
-(async function fetchDefaultInfoIpify() {
+/*(async function fetchDefaultInfoIpify() {
 let apiResponse = await fetch('https://geo.ipify.org/api/v1?apiKey=at_KOKeqxdXZ9m8bjMRT56XCWfWNJ74S')
 let apiResponseJson = await apiResponse.json()
 console.log(apiResponseJson)
@@ -97,6 +97,41 @@ apiIpResponse().then((data) => {
     addressElem.textContent = `${data.location.city}, ${data.location.country}`
     timezoneElem.textContent = `UTC${data.location.timezone}`
     ispProviderElem.textContent = data.isp
+    
+    //mapElem.innerHTML = '<div id="map"></div>'
+
+    var container = L.DomUtil.get('mymap');
+      if(container != null){
+        container._leaflet_id = null;
+      }
+    
+        //mymap.off()
+       //mymap.remove() 
+ var mymap = L.map('map').setView([data.location.lat, data.location.lng], 16);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiamRlbm5laHkiLCJhIjoiY2toOWRzd3Q4MTRxcTJ4bnp5cG5naDRzdSJ9.j35dVO1T0md4X0YIbp2Ilg'
+}).addTo(mymap);
+
+var blackIcon = L.icon({
+    iconUrl: '../images/icon-location.svg',
+    iconSize:     [33, 90],
+});
+L.marker([data.location.lat, data.location.lng], {icon: blackIcon}).addTo(mymap);
+    
+
+    
+
+
+
+
+
+
 }).catch((e) => {
     alert(e)
 })
@@ -108,6 +143,44 @@ apiIpResponse().then((data) => {
 else if (domainMatch !== null) {
 if (domainMatch.length > 0) {
 console.log('Working')
+let apiDomainResponse = async () => {
+let response = await fetch(`https://geo.ipify.org/api/v1?apiKey=at_KOKeqxdXZ9m8bjMRT56XCWfWNJ74S&domain=${inputField.value}`);
+let data = response.json();
+return data;
+}
+apiDomainResponse().then((data) => {
+    console.log(data)
+    ipAddressElem.textContent = data.ip
+    addressElem.textContent = `${data.location.city}, ${data.location.country}`
+    timezoneElem.textContent = `UTC${data.location.timezone}`
+    ispProviderElem.textContent = data.isp
+
+    mapElem.innerHTML = '<div id="map"></div>'
+
+    var mymap = L.map('map').setView([data.location.lat, data.location.lng], 16);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiamRlbm5laHkiLCJhIjoiY2toOWRzd3Q4MTRxcTJ4bnp5cG5naDRzdSJ9.j35dVO1T0md4X0YIbp2Ilg'
+}).addTo(mymap);
+
+var blackIcon = L.icon({
+    iconUrl: '../images/icon-location.svg',
+    iconSize:     [33, 90],
+});
+
+
+
+
+L.marker([data.location.lat, data.location.lng], {icon: blackIcon}).addTo(mymap);
+}).catch((e) => {
+    alert(e)
+})
+
 console.log(inputField.value)
 }
 }

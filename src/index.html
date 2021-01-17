@@ -1,60 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IP Address Tracker</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon-32x32.png"
+    />
+    <!--Rubik Google Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!--Leaflet CSS-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
 
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-</head>
-<body>
+    <!-- Leaflet JavaScript -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+  </head>
+  <body>
     <div id="inputfieldDivWrapper">
-        <h1 id="siteTitle">IP Address Tracker</h1>
-        <div id="inputBoxContainer">
-<input type="text" placeholder="Search for any IP address or domain" id="inputField" pattern="^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$" title="3 numbers followed by a full stop. 3 numbers followed by a full stop. 3 numbers followed by a full stop. 3 numbers or domain name String.">
-<input type="submit" id="submitButton">
-        </div>
-        
+      <h1 id="siteTitle">IP Address Tracker</h1>
+      <div id="inputBoxContainer">
+        <input
+          type="text"
+          placeholder="Search for any IP address or domain"
+          id="inputField"
+          pattern="^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$"
+          title="3 numbers followed by a full stop. 3 numbers followed by a full stop. 3 numbers followed by a full stop. 3 numbers or domain name String."
+        />
+        <input type="submit" id="submitButton" />
+      </div>
     </div>
-
+    <!-- Container for IP info display component -->
     <div id="ipInformationContainer">
-        <div class="ipInfoElement">
-            <p class="ipInfoTitle">IP ADDRESS</p>
-            <p class="ipInfoValue" id="ipAddress">192.212.174.101</p>
-
-        </div>
-        <div class="ipInfoElement">
-            <p class="ipInfoTitle">LOCATION</p>
-            <p class="ipInfoValue" id="address">Brooklyn, NY 10001</p>
-        
-        </div>
-        <div class="ipInfoElement">
-            <p class="ipInfoTitle">TIMEZONE</p>
-            <p class="ipInfoValue" id="timezone">UTC-05:00</p>
-        
-        </div>
-        <div class="ipInfoElement">
-            <p class="ipInfoTitle">ISP</p>
-            <p class="ipInfoValue" id="ispProvider">SpaceX Starlink</p>
-        
-        </div>
-
+      <div class="ipInfoElement">
+        <p class="ipInfoTitle">IP ADDRESS</p>
+        <p class="ipInfoValue" id="ipAddress">192.212.174.101</p>
+      </div>
+      <div class="ipInfoElement">
+        <p class="ipInfoTitle">LOCATION</p>
+        <p class="ipInfoValue" id="address">Brooklyn, NY 10001</p>
+      </div>
+      <div class="ipInfoElement">
+        <p class="ipInfoTitle">TIMEZONE</p>
+        <p class="ipInfoValue" id="timezone">UTC-05:00</p>
+      </div>
+      <div class="ipInfoElement">
+        <p class="ipInfoTitle">ISP</p>
+        <p class="ipInfoValue" id="ispProvider">SpaceX Starlink</p>
+      </div>
     </div>
-
+    <!-- Div where map is populated -->
     <div id="map"></div>
-    
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

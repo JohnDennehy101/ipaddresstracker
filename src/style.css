@@ -1,8 +1,10 @@
+/* Removing default margin from browser, updating font-family to be used */
 * {
   margin: 0;
   font-family: "Rubik", sans-serif;
 }
 
+/* Styling for top section with background image */
 #inputfieldDivWrapper {
   height: 35vh;
   background-image: url("../images/pattern-bg.png");
@@ -12,6 +14,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+/* 'Ip Address Tracker' title */
 #siteTitle {
   text-align: center;
   padding-top: 30px;
@@ -19,31 +22,34 @@
   font-weight: 500;
 }
 
+/* Input field */
 input[type="text"] {
   width: 36vw;
   height: 50px;
   font-size: 16px;
   border-radius: 15px;
   margin: 10px auto;
-
   box-sizing: border-box;
   padding-left: 20px;
-
   padding-right: 50px;
   display: inline-block;
 }
 
+/* Hover state for input field */
 input[type="text"]:hover {
   cursor: pointer;
 }
 
+/* Class that is applied if no regex match is found on keyup JavaScript event */
 .invalidInput {
   border: red solid 3px;
 }
+/* Class that is applied if regex match is found on keyup JavaScript event */
 .validInput {
   border: green solid 3px;
 }
 
+/* Submit button */
 input[type="submit"] {
   height: 50px;
   width: 4vw;
@@ -63,10 +69,12 @@ input[type="submit"] {
   right: 460px;
 }
 
+/* Hover state for submit button */
 input[type="submit"]:hover {
   cursor: pointer;
 }
 
+/* Container for input field and Submit button */
 #inputBoxContainer {
   width: 80%;
   margin: 20px auto;
@@ -75,6 +83,7 @@ input[type="submit"]:hover {
   justify-content: center;
 }
 
+/* Parent container of IP address information section */
 #ipInformationContainer {
   width: 75%;
   background-color: #ffffff;
@@ -86,8 +95,8 @@ input[type="submit"]:hover {
   display: flex;
 }
 
+/* For styling each piece of IP info with a parent container  */
 .ipInfoElement {
-  /*border: 3px solid black;*/
   flex: 1 1 auto;
   width: 25%;
   text-align: left;
@@ -97,9 +106,9 @@ input[type="submit"]:hover {
   flex-direction: column;
   justify-content: center;
   padding-left: 30px;
-  /*border-right: 1px solid red;*/
 }
 
+/* For setting left borders between ip info elements */
 .ipInfoElement:after {
   content: "";
   position: absolute;
@@ -109,10 +118,12 @@ input[type="submit"]:hover {
   border-left: 1px solid hsl(0, 0%, 59%);
 }
 
+/* Removing left border of first ip info element */
 .ipInfoElement:nth-of-type(1)::after {
   border-left: none;
 }
 
+/* IP info titles */
 .ipInfoTitle {
   padding-bottom: 20px;
   margin-top: -20px;
@@ -121,6 +132,7 @@ input[type="submit"]:hover {
   font-weight: 500;
 }
 
+/* IP info values */
 .ipInfoValue {
   font-size: 24px;
   width: 150px;
@@ -128,9 +140,9 @@ input[type="submit"]:hover {
   font-weight: 500;
 }
 
+/* Map */
 #map {
   width: 100vw;
-  /*background-color: #333333;*/
   height: 68vh;
   position: relative;
   padding-top: -40px;
@@ -138,28 +150,35 @@ input[type="submit"]:hover {
   z-index: -1;
 }
 
+/* Media Query for max-width of 500px */
 @media screen and (max-width: 500px) {
+  /* Ensuring that the display stretches across the full width of the screen */
   body {
     width: 100%;
   }
+  /* Increasing width and height of input field */
   input[type="text"] {
     width: 90%;
     height: 60px;
   }
+  /* Reducing font size of input field placeholder text */
   input[type="text"]::placeholder {
     font-size: 15px;
   }
+  /* Adjusting dimensions and positioning of submit button (to align with input field) */
   input[type="submit"] {
     right: 20px;
     width: 50px;
     height: 60px;
   }
+  /* Changing flex direction to column for mobile and adjusting dimensions and position */
   #ipInformationContainer {
     flex-direction: column;
     height: 40vh;
     width: 90%;
     margin-top: -125px;
   }
+  /* Reduce font size, remove padding, align text to center and adjust margins and letter spacing for ip info title elements */
   .ipInfoTitle {
     font-size: 11px;
     padding: 0px;
@@ -168,6 +187,7 @@ input[type="submit"]:hover {
     text-align: center;
     letter-spacing: 1px;
   }
+  /* Reduce font size, align text to center, remove margins (apart from bottom margin) for ip info value elements */
   .ipInfoValue {
     font-size: 18px;
     width: 90%;
@@ -176,7 +196,7 @@ input[type="submit"]:hover {
     margin-bottom: 10px;
     height: 20px;
   }
-
+  /* Increase width, reduce margin and remove padding from ip info element (that contains title and value of ip info) */
   .ipInfoElement {
     width: 100%;
     margin: 5px auto;
@@ -185,44 +205,56 @@ input[type="submit"]:hover {
   .ipInfoElement:after {
     border-left: none;
   }
+  /* Reducing top padding of title from 30px to 20px */
   #siteTitle {
     padding-top: 20px;
   }
   #inputfieldDivWrapper {
     height: 43vh;
   }
+  /* Increasing width of container (that contains input field) */
   #inputBoxContainer {
     width: 100%;
   }
+  /* Increasing top margin of map element (to align it with the top element) */
   #map {
     margin-top: -142px;
   }
 }
 
+/* Media Query for max-width of 360px */
 @media screen and (max-width: 360px) {
+  /* Reducing top margin and height of ip info container element */
   #ipInformationContainer {
     margin-top: -110px;
     height: 35vh;
   }
+  /* Reducing bottom margin of ip info value */
   .ipInfoValue {
     margin-bottom: 5px;
   }
+  /* Reducing bottom margin of ip info title */
   .ipInfoTitle {
     margin-bottom: 5px;
   }
+  /* Removing margin from ip info element (contains ip info title and ip info value) */
   .ipInfoElement {
     margin: 0px;
   }
 }
 
+/* Media Query for max-width of 321px */
 @media screen and (max-width: 321px) {
+  /* Making heading smaller */
   h1 {
     font-size: 20px;
   }
+  /* Removing margin from top of input field (and reducing height to make smaller) */
   input[type="text"] {
     height: 50px;
     margin-top: 0px;
   }
+  /* Making submit button smaller (to align with input field) and adjusting position */
   input[type="submit"] {
     height: 46px;
     right: 18px;

@@ -137,3 +137,95 @@ input[type="submit"]:hover {
   margin-top: -90px;
   z-index: -1;
 }
+
+@media screen and (max-width: 500px) {
+  body {
+    width: 100%;
+  }
+  input[type="text"] {
+    width: 90%;
+    height: 60px;
+  }
+  input[type="text"]::placeholder {
+    font-size: 15px;
+  }
+  input[type="submit"] {
+    right: 20px;
+    width: 50px;
+    height: 60px;
+  }
+  #ipInformationContainer {
+    flex-direction: column;
+    height: 40vh;
+    width: 90%;
+    margin-top: -125px;
+  }
+  .ipInfoTitle {
+    font-size: 11px;
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .ipInfoValue {
+    font-size: 18px;
+    width: 90%;
+    text-align: center;
+    margin: 0px auto;
+    margin-bottom: 10px;
+    height: 20px;
+  }
+
+  .ipInfoElement {
+    width: 100%;
+    margin: 5px auto;
+    padding: 0px;
+  }
+  .ipInfoElement:after {
+    border-left: none;
+  }
+  #siteTitle {
+    padding-top: 20px;
+  }
+  #inputfieldDivWrapper {
+    height: 43vh;
+  }
+  #inputBoxContainer {
+    width: 100%;
+  }
+  #map {
+    margin-top: -142px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #ipInformationContainer {
+    margin-top: -110px;
+    height: 35vh;
+  }
+  .ipInfoValue {
+    margin-bottom: 5px;
+  }
+  .ipInfoTitle {
+    margin-bottom: 5px;
+  }
+  .ipInfoElement {
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  h1 {
+    font-size: 20px;
+  }
+  input[type="text"] {
+    height: 50px;
+    margin-top: 0px;
+  }
+  input[type="submit"] {
+    height: 46px;
+    right: 18px;
+    top: 66px;
+  }
+}

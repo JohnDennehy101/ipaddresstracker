@@ -40,6 +40,8 @@ L.marker([apiResponseJson.location.lat, apiResponseJson.location.lng], {icon: bl
 
 })();*/
 
+
+
 inputField.addEventListener("keyup", () => {
 console.log(inputField.value.length);
 const ipRegex = /^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\.(?!$)|$)){4}$/g;
